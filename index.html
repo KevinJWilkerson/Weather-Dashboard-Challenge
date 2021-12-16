@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col header">
+                    <p>
+                        <h1>Weather Dashboard</h1>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <!-- container to search for a city and log past searches -->
+                <form class="col-3 container">
+                    <div class="row submitbtn">
+                        <label for="citySearch" class="form-label">Search for a City:</label>
+                        <input type="text" class="form-control" id="citySearch" placeholder="name@example.com">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+
+                    <div class="search-log-container">
+
+                    </div>
+                </form>
+                
+                <div class="col-9">
+                    <!-- container for today's weather forecast -->
+                    <div id="today-forecast-container">
+                        <p>dummy</p>
+                    </div>
+                    <div id="5-day-forecast-container">
+                        <p>dummy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
