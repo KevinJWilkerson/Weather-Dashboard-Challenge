@@ -14,28 +14,25 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Sofia"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Document</title>
   </head>
-  <header class="jumbotron">
+  <header class="billboard">
     <h1>Weather Dashboard</h1>
   </header>
   <body>
-    <article class="full-board row align-items-start">
-      <section class="city-search col-3">
+    <section class="page-content">
+      <section class="city-search">
         <h2>Search for a City:</h2>
         <input
           type="text"
           name="city-search"
-          class="search-bar col-10"
-          id="search-bar"
+          class="search col-10"
+          id="search"
         />
         <div>
-          <button type="submit" class="btn btn-primary col-10" id="search-btn">
+          <button type="submit" class="search-btn btn col-10" id="search-btn">
             Search
           </button>
         </div>
@@ -49,12 +46,12 @@
         </article>
       </section>
 
-      <article class="column col-9">
+      <article class="city-results">
         <div class="details-board col-11" id="details-board">
           <!-- Populate city information here-->
         </div>
         <div class="forecast-board col-11">
-          <h2 class="forecast-title">5-Day Forecast</h2>
+          <h2 class="">5-Day Forecast</h2>
           <ul
             class="forecast-cards container row align-items-start"
             id="forecast-cards"

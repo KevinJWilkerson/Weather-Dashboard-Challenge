@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0.5%;
+  padding: 0.5%;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 50px 30px;
+}
+
+html,
+body {
+  min-height: 100%;
+  padding: 0%;
+}
+
+h2 {
+  font-size: 2vw;
+  font-weight: bolder;
+}
+
+button {
+  padding: 5% 0 5% 0;
+}
+
+/* custom CSS classes start */
+
+.billboard {
+  background-image: linear-gradient(to right, #3b6ec4, #230455);
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+  font-size: auto;
+}
+
+.page-content {
+  display: flex;
+  width: 100%;
+}
+
+.search-btn {
+  background-color: #5aa2e9;
+  text-align: center;
+  color: white;
+}
+
+.city-search {
+  width: 25%;
+}
+
+.city-results {
+  width: 65%;
+}
+
+/* custom CSS classes end */
