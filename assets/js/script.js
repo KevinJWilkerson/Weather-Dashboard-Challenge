@@ -7,7 +7,7 @@ var date = new Date();
 
 function populateCityHistory(cityName) {
   $(".history-btn").remove();
-  console.log(cityHistoryBtnsArr);
+
   if (cityName !== $(".city-history").children().innerText) {
     cityHistoryBtnsArr.unshift(cityName);
   }
@@ -109,8 +109,6 @@ var getLocation = function (cityInput) {
       const lat = data.results[0].bounds.northeast.lat;
       const lon = data.results[0].bounds.northeast.lng;
       const cityNameData = data.results[0].components.city;
-      console.log(lat);
-      console.log(lon);
 
       getData(lat, lon, cityNameData);
     });
@@ -133,7 +131,6 @@ var getData = function (lat, lon, cityNameData) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       const currentTemp = data.current.temp;
       const currentWind = data.current.wind_speed;
       const currentHumidity = data.current.humidity;
@@ -199,7 +196,6 @@ var createForecastCards = function (
     .attr("id", "current-weather-type");
 
   if (currentWeatherType == "Clouds") {
-    console.log("cloudy");
     var cloudyIcon = $('<ion-icon name="cloudy-outline"></ion-icon>');
     dailyWeatherTypePrint.append(cloudyIcon);
   } else if (currentWeatherType == "Rain") {
@@ -234,8 +230,6 @@ var loadHistory = function () {
   if (!savedHistory) {
     return false;
   }
-
-  console.log("Found Saved History!");
 
   savedHistory = JSON.parse(savedHistory);
 
