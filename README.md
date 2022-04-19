@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-- [Usage](#Usage)
+- [Usage](#usage)
 - [Screenshot](#screenshot)
 - [Questions](#questions)
 
@@ -16,7 +16,7 @@ This site can be used by anyone to get a forecast of the weather anywhere in the
 
 # Screenshot
 
-<img src="assets\images\Screenshot.png" alt="Screenshot of the weather dashboard">
+<img src="/assets/images/Screenshot.png" alt="Screenshot of the weather dashboard">
 
 # Questions
 
