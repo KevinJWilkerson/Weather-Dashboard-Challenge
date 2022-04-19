@@ -17,8 +17,31 @@ body {
 }
 
 h2 {
-  font-size: 2vw;
+  font-size: 2.5vw;
   font-weight: bolder;
+}
+
+h3 {
+  font-size: 3vw;
+  margin-left: 0;
+}
+
+h4 {
+  font-size: 2vw;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  margin: none;
+}
+
+li {
+  text-decoration: none;
+  font-size: 1.5vw;
 }
 
 button {
@@ -40,18 +63,83 @@ button {
   width: 100%;
 }
 
-.search-btn {
-  background-color: #5aa2e9;
-  text-align: center;
-  color: white;
-}
-
 .city-search {
   width: 25%;
 }
 
+.input {
+  padding-left: 2.5%;
+  margin-bottom: 1vw;
+  width: 100%;
+}
+
+.search-btn {
+  background-color: #5aa2e9;
+  text-align: center;
+  color: white;
+  margin-bottom: 1vw;
+  width: 100%;
+}
+
+.clear-btn {
+  background-color: #e01414;
+  text-align: center;
+  color: white;
+
+  width: 100%;
+}
+
+.history-btn {
+  background-color: #6c757d;
+  text-align: center;
+  color: white;
+  margin-bottom: 1vw;
+  width: 100%;
+}
+
 .city-results {
-  width: 65%;
+  width: 75%;
+}
+
+.details-board {
+  border: 1px solid gray;
+  width: 100%;
+}
+
+.forecast-cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-left: 0;
+  width: 100%;
+}
+
+.forecast-card {
+  background-color: #33475a;
+  color: white;
+  padding-left: 1%;
+  height: 25vw;
+  width: 19%;
+}
+
+.good {
+  background-color: #3eab30;
+}
+
+.moderate {
+  background-color: #f6ee16;
+}
+
+.high {
+  background-color: #eb920c;
+}
+
+.very-high {
+  background-color: #e33a0f;
+}
+
+.extreme {
+  background-color: #ba6cab;
 }
 
 /* custom CSS classes end */

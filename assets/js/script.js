@@ -5,7 +5,7 @@ var cityHistoryBtnsArr = [];
 var cityInput = $("#search");
 
 function populateCityHistory(cityName) {
-  $(".city-history-btns").remove();
+  $(".history-btn").remove();
   console.log(cityHistoryBtnsArr);
   if (cityName !== $(".city-history").children().innerText) {
     cityHistoryBtnsArr.unshift(cityName);
@@ -14,8 +14,8 @@ function populateCityHistory(cityName) {
   for (var i = 0; i < cityHistoryBtnsArr.length; i++) {
     var cityHistoryBtns = $("<button></button>")
       .text(cityHistoryBtnsArr[i])
-      .attr("id", "city-history-btn" + i)
-      .addClass("city-history-btns btn btn-secondary col-10 ");
+      .attr("id", "history-btn" + i)
+      .addClass("history-btn btn btn-secondary col-10 ");
     cityHistory.append(cityHistoryBtns);
   }
 
@@ -27,22 +27,42 @@ function printCurrentWeather(
   currentTemp,
   currentWind,
   currentHumidity,
+  currentUVI,
   currentWeatherType
 ) {
   var detailsChildren = detailsBoard.children();
   detailsChildren.remove();
 
-  var cityNamePrint = $("<h2>" + cityName + "</h2>").addClass("city-name");
-  var currentTempPrint = $(
-    "<h3>Current Temperature: " + currentTemp + "</h3>"
-  ).addClass("current-temp");
-  var currentWindPrint = $("<h3>Wind Speed: " + currentWind + "</h3>").addClass(
-    "current-wind"
-  );
-  var currentHumidityPrint = $(
-    "<h3>Humidity: " + currentHumidity + "</h3>"
-  ).addClass("current-humidity");
-  var currentWeatherTypePrint = $("<h3>" + currentWeatherType + "</h3>")
+  var cityNamePrint = $("<h1>" + cityName + "</h1>");
+  var currentTempPrint = $("<h4>Temp: " + currentTemp + `°F</h4>`);
+  var currentWindPrint = $("<h4>Wind Speed: " + currentWind + " MPH</h4>");
+  var currentHumidityPrint = $("<h4>Humidity: " + currentHumidity + "%</h4>");
+
+  /* else if statement to determine UV rating */
+  if (currentUVI < 3) {
+    var currentUVIPrint = $(
+      `<h4>UVI: ` + `<span class="good">` + currentUVI + "</span></h4>"
+    );
+  } else if (currentUVI < 6) {
+    var currentUVIPrint = $(
+      `<h4">UVI: ` + `<span class="moderate">` + currentUVI + "</span></h4>"
+    );
+  } else if (currentUVI < 8) {
+    var currentUVIPrint = $(
+      `<h4>UVI: ` + `<span class="high">` + currentUVI + "</span></h4>"
+    );
+  } else if (currentUVI < 11) {
+    var currentUVIPrint = $(
+      `<h4>UVI: ` + `<span class="very-high">` + currentUVI + "</span></h4>"
+    );
+  } else if (currentUVI >= 11) {
+    var currentUVIPrint = $(
+      `<h4>UVI: ` + `<span class="extreme">` + currentUVI + "</span></h4>"
+    );
+  }
+
+  // var currentUVIPrint = $("<h4>UVI: " + currentUVI + "</h4>");
+  var currentWeatherTypePrint = $("<h4>" + currentWeatherType + "</h4>")
     .addClass("current-weather-type")
     .attr("id", "current-weather-type");
 
@@ -65,9 +85,11 @@ function printCurrentWeather(
     currentTempPrint,
     currentWindPrint,
     currentHumidityPrint,
+    currentUVIPrint,
     currentWeatherTypePrint
   );
 }
+/* API call to get lat and lon to use in openweatherAPI call */
 
 var getLocation = function (cityInput) {
   var cityName = cityInput.val();
@@ -91,15 +113,18 @@ var getLocation = function (cityInput) {
     });
 };
 
-var getData = function (lat, lon, cityNameData) {
-  console.log("got data");
+/* end API call for lat and lon
 
+
+/* API call to get weather data */
+
+var getData = function (lat, lon, cityNameData) {
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
       lat +
       "&lon=" +
       lon +
-      "&exclude=minutely,hourly&units=imperial&appid=3a936e1ee5ee6b0594bbd2ef44b89c3c"
+      "&exclude=minutely,hourly&units=imperial&appid=2ced79eefc96c12374c91b18299a5bd7"
   )
     .then((response) => {
       return response.json();
@@ -109,12 +134,14 @@ var getData = function (lat, lon, cityNameData) {
       const currentTemp = data.current.temp;
       const currentWind = data.current.wind_speed;
       const currentHumidity = data.current.humidity;
+      const currentUVI = data.current.uvi;
       const currentWeatherType = data.current.weather[0].main;
       printCurrentWeather(
         cityNameData,
         currentTemp,
         currentWind,
         currentHumidity,
+        currentUVI,
         currentWeatherType
       );
 
@@ -131,38 +158,39 @@ var getData = function (lat, lon, cityNameData) {
         const currentTemp = parseInt(data.daily[i].temp.day);
         const currentWind = parseInt(data.daily[i].wind_speed);
         const currentHumidity = data.daily[i].humidity;
+        const currentUVI = data.daily[i].uvi;
         const currentWeatherType = data.daily[i].weather[0].main;
         createForecastCards(
           finalDate,
           currentTemp,
           currentWind,
           currentHumidity,
+          currentUVI,
           currentWeatherType
         );
       }
     });
 };
 
+/* end of API call to get openweather data */
+
+/* function to create forecast cards */
+
 var createForecastCards = function (
   finalDate,
   currentTemp,
   currentWind,
   currentHumidity,
+  currentUVI,
   currentWeatherType,
   containerChildren,
   cardContainer
 ) {
-  var cardContainer = $('<li class="col">').addClass("card-container");
-  var date = $("<strong>" + finalDate + "</strong>").addClass("city-name");
-  var dailyTempPrint = $("<p>Temperature: " + currentTemp + "</p>").addClass(
-    "current-temp"
-  );
-  var dailyWindPrint = $("<p>Wind Speed: " + currentWind + "</p>").addClass(
-    "current-wind"
-  );
-  var dailyHumidityPrint = $(
-    "<p>Humidity: " + currentHumidity + "</p>"
-  ).addClass("current-humidity");
+  var cardContainer = $('<li class="">').addClass("forecast-card");
+  var date = $("<strong>" + finalDate + "</strong>");
+  var dailyTempPrint = $("<p>Temp: " + currentTemp + "°F</p>");
+  var dailyWindPrint = $("<p>Wind: " + currentWind + " MPH</p>");
+  var dailyHumidityPrint = $("<p>Humidity: " + currentHumidity + "%</p>");
   var dailyWeatherTypePrint = $("<p>" + currentWeatherType + "</p>")
     .addClass("current-weather-type")
     .attr("id", "current-weather-type");
@@ -191,6 +219,8 @@ var createForecastCards = function (
   forecastCardsSection.append(cardContainer);
 };
 
+/* end of function to create forecast cards */
+
 var saveHistory = function () {
   localStorage.setItem("city-history", JSON.stringify(cityHistoryBtnsArr));
 };
@@ -213,8 +243,8 @@ var loadHistory = function () {
   for (var i = 0; i < cityHistoryBtnsArr.length; i++) {
     var cityHistoryBtns = $("<button></button>")
       .text(cityHistoryBtnsArr[i])
-      .attr("id", "city-history-btn" + i)
-      .addClass("city-history-btns btn btn-secondary col-9 p-2");
+      .attr("id", "history-btn" + i)
+      .addClass("history-btn btn btn-secondary col-9 p-2");
     cityHistory.append(cityHistoryBtns);
   }
 };
@@ -225,7 +255,7 @@ $("#search-btn").on("click", function () {
 });
 
 $("#city-history").on("click", function (event) {
-  $(".city-history-btns").remove();
+  $(".history-btn").remove();
   var value = event.target.innerText.trim();
   $(".search-bar").val(value);
   var containerChildren = forecastCardsSection.children();

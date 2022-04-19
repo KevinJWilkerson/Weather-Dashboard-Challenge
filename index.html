@@ -28,8 +28,9 @@
         <input
           type="text"
           name="city-search"
-          class="search col-10"
+          class="input"
           id="search"
+          placeholder="Austin"
         />
         <div>
           <button type="submit" class="search-btn btn col-10" id="search-btn">
@@ -37,10 +38,11 @@
           </button>
         </div>
         <div>
-          <button type="submit" class="btn btn-danger col-10" id="clear-btn">
+          <button type="submit" class="clear-btn btn col-10" id="clear-btn">
             Clear History
           </button>
         </div>
+        <hr>
         <article class="city-history d-grid gap-3" id="city-history">
           <!-- City history names populate as buttons here-->
         </article>
@@ -50,10 +52,10 @@
         <div class="details-board col-11" id="details-board">
           <!-- Populate city information here-->
         </div>
-        <div class="forecast-board col-11">
-          <h2 class="">5-Day Forecast</h2>
+        <div class="forecast-board">
+          <h3 class="">5-Day Forecast:</h3>
           <ul
-            class="forecast-cards container row align-items-start"
+            class="forecast-cards"
             id="forecast-cards"
           >
             <!-- Populate forecast cards here-->
