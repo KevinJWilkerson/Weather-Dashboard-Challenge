@@ -1,56 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
     <title>Document</title>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col header">
-                    <p>
-                        <h1>Weather Dashboard</h1>
-                    </p>
-                </div>
-            </div>
+  </head>
+  <header class="jumbotron">
+    <h1>Weather Dashboard</h1>
+  </header>
+  <body>
+    <article class="full-board row align-items-start">
+      <section class="city-search col-3">
+        <h2>Search for a City:</h2>
+        <input
+          type="text"
+          name="city-search"
+          class="search-bar col-10"
+          id="search-bar"
+        />
+        <div>
+          <button type="submit" class="btn btn-primary col-10" id="search-btn">
+            Search
+          </button>
         </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <!-- container to search for a city and log past searches -->
-                <form class="col-3 container">
-                    <div class="row submitbtn">
-                        <label for="citySearch" class="form-label">Search for a City:</label>
-                        <input type="text" class="form-control" id="citySearch" placeholder="name@example.com">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-
-                    <div class="search-log-container">
-
-                    </div>
-                </form>
-                
-                <div class="col-9">
-                    <!-- container for today's weather forecast -->
-                    <div id="today-forecast-container">
-                        <p>dummy</p>
-                    </div>
-                    <div id="5-day-forecast-container">
-                        <p>dummy</p>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <button type="submit" class="btn btn-danger col-10" id="clear-btn">
+            Clear History
+          </button>
         </div>
-    </main>
-    
+        <article class="city-history d-grid gap-3" id="city-history">
+          <!-- City history names populate as buttons here-->
+        </article>
+      </section>
+
+      <article class="column col-9">
+        <div class="details-board col-11" id="details-board">
+          <!-- Populate city information here-->
+        </div>
+        <div class="forecast-board col-11">
+          <h2 class="forecast-title">5-Day Forecast</h2>
+          <ul
+            class="forecast-cards container row align-items-start"
+            id="forecast-cards"
+          >
+            <!-- Populate forecast cards here-->
+          </ul>
+        </div>
+      </article>
+    </article>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
