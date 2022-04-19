@@ -3,6 +3,7 @@ var forecastCardsSection = $("#forecast-cards");
 var detailsBoard = $("#details-board");
 var cityHistoryBtnsArr = [];
 var cityInput = $("#search");
+var date = new Date();
 
 function populateCityHistory(cityName) {
   $(".history-btn").remove();
@@ -33,7 +34,9 @@ function printCurrentWeather(
   var detailsChildren = detailsBoard.children();
   detailsChildren.remove();
 
-  var cityNamePrint = $("<h1>" + cityName + "</h1>");
+  var cityNamePrint = $(
+    "<h1>" + cityName + " " + date.toDateString() + "</h1>"
+  );
   var currentTempPrint = $("<h4>Temp: " + currentTemp + `°F</h4>`);
   var currentWindPrint = $("<h4>Wind Speed: " + currentWind + " MPH</h4>");
   var currentHumidityPrint = $("<h4>Humidity: " + currentHumidity + "%</h4>");
